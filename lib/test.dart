@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'cubit/get_weather_cubit/get_weather_cubit.dart';
@@ -39,38 +40,40 @@ class WeatherInfoModern extends StatelessWidget {
                 ]),
 
                 //! This is the scend colume num 2
-                const SizedBox(height: 5),
-                Row(children: [
-                  Row(children: [
-                    const Icon(Icons.wb_sunny_sharp,
-                        size: 50, color: Colors.white),
-                    const SizedBox(width: 20),
-                    CustomText(
-                        text: '${weatherModel.temp}°',
-                        color: Colors.white,
-                        fontSize: 50,
-                        fontWeight: FontWeight.bold)
-                  ]),
-                  const SizedBox(width: 40),
-                  Column(children: [
-                    CustomText(
-                        color: Colors.grey,
-                        fontWeight: FontWeight.bold,
-                        text: '${weatherModel.weatherStatus} ',
-                        fontSize: 14),
-                    CustomText(
-                        text:
-                            '${weatherModel.maxTemp}° /  ${weatherModel.minTemp}°',
-                        color: Colors.grey,
-                        fontSize: 14),
-                    const CustomText(
-                        color: Colors.grey,
-                        text: 'Feels like 22°',
-                        fontSize: 14)
-                  ])
-                ]),
-                //! This is the scend colume num 3
                 const SizedBox(height: 15),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Row(children: [
+                        Image.network("https:${weatherModel.image}",
+                            fit: BoxFit.contain),
+                        const SizedBox(width: 15),
+                        CustomText(
+                            text: '${weatherModel.temp}°',
+                            color: Colors.white,
+                            fontSize: 45,
+                            fontWeight: FontWeight.bold)
+                      ]),
+                      SizedBox(width: MediaQuery.of(context).size.width * 0.1),
+                      Column(children: [
+                        CustomText(
+                            color: Colors.grey,
+                            fontWeight: FontWeight.bold,
+                            text: '${weatherModel.weatherStatus} ',
+                            fontSize: 14),
+                        CustomText(
+                            text:
+                                '${weatherModel.maxTemp}° /  ${weatherModel.minTemp}°',
+                            color: Colors.grey,
+                            fontSize: 14),
+                        CustomText(
+                            color: Colors.grey,
+                            text: 'Feel like ${weatherModel.feel}°',
+                            fontSize: 14)
+                      ])
+                    ]),
+                //! This is the scend colume num 3
+                const SizedBox(height: 25),
                 const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
@@ -82,7 +85,7 @@ class WeatherInfoModern extends StatelessWidget {
                     ]),
 
                 //! This is the scend colume num 4
-                const SizedBox(height: 20),
+                const SizedBox(height: 25),
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
@@ -93,7 +96,7 @@ class WeatherInfoModern extends StatelessWidget {
                     WeatherInfoLast(),
                   ],
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 1),
 
                 MaterialButton(
                     onPressed: () {},
@@ -126,10 +129,10 @@ class WeatherInfoLast extends StatelessWidget {
       children: [
         Column(
           children: [
-            const Icon(
-              Icons.wb_sunny_outlined,
-              color: Colors.grey,
-            ),
+            SizedBox(
+                height: MediaQuery.of(context).size.height * 0.06,
+                child: Image.network("https:${weatherModel.image}",
+                    fit: BoxFit.contain)),
             const SizedBox(height: 5),
             CustomText(
               text: '${weatherModel.temp}°',

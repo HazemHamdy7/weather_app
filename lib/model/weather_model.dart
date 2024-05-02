@@ -6,8 +6,10 @@ class WeatherModel {
   final double maxTemp;
   final double minTemp;
   final String weatherStatus;
+  final double feel;
 
   WeatherModel({
+    required this.feel,
     required this.cityName,
     required this.date,
     required this.image,
@@ -19,6 +21,7 @@ class WeatherModel {
 
   factory WeatherModel.fromJson(json) {
     return WeatherModel(
+      feel: json['current']['temp_c'],
       cityName: json['location']['name'],
       date: json['current']['last_updated'],
       temp: json['forecast']['forecastday'][0]['day']['avgtemp_c'],

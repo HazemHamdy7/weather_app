@@ -22,34 +22,33 @@ class WeatherInfoView extends StatelessWidget {
             Text(weatherModel.cityName,
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-              Text(weatherModel.date, style: TextStyle(fontSize: 20)),
+            Text(weatherModel.date, style: const TextStyle(fontSize: 20)),
             const SizedBox(height: 32),
             Padding(
               padding: const EdgeInsets.all(25.0),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SizedBox(
-                        height: 50,
-                        width: 50,
-                        child: Image.asset('assets/three.jpg',
-                            fit: BoxFit.contain)),
-                    const Text('17',
-                        style: TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold)),
-                    const Column(children: [
-                      Text('Max temp 17',
-                          style: TextStyle(
+                    Image.network("https:${weatherModel.image}",
+                        fit: BoxFit.contain),
+                    Text('${weatherModel.temp}°',
+                        style: const TextStyle(
+                            fontSize: 32, fontWeight: FontWeight.bold)),
+                    Column(children: [
+                      Text('Max temp: ${weatherModel.maxTemp}°',
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16)),
-                      Text('Min temp 10',
-                          style: TextStyle(
+                      Text('Min temp: ${weatherModel.minTemp}°',
+                          style: const TextStyle(
                               fontWeight: FontWeight.bold, fontSize: 16)),
                     ])
                   ]),
             ),
-            const Text('Light Rain',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            const SizedBox(height: 125),
+            const SizedBox(height: 32),
+            Text(weatherModel.weatherStatus,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 40),
             MaterialButton(
                 color: Colors.black,
                 child: const Text(
