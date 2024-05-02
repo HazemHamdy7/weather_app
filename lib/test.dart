@@ -7,6 +7,9 @@ class WeatherInfoModern extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [Icon(Icons.arrow_back)],
+      ),
       body: Center(
         child: Container(
           color: Colors.grey[900],

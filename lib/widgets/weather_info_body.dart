@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_finsh/test.dart';
 import 'package:weather_app_finsh/views/search_view.dart';
 
 class WeatherInfoView extends StatelessWidget {
@@ -56,6 +57,15 @@ class WeatherInfoView extends StatelessWidget {
             ),
             const Text('Light Rain',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            MaterialButton(
+                color: Colors.black,
+                child: const Text('Go'),
+                onPressed: () {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) {
+                    return const WeatherInfoModern();
+                  }));
+                })
           ],
         ),
       ),

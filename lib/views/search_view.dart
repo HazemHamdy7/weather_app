@@ -1,12 +1,5 @@
-import 'dart:developer';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:weather_app_finsh/model/weather_model.dart';
-import 'package:weather_app_finsh/service/weather_service.dart';
 import 'package:weather_app_finsh/widgets/weather_info_body.dart';
-
-import '../test.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});
@@ -27,15 +20,15 @@ class SearchView extends StatelessWidget {
                 // log(weatherModel.date);
               },
               decoration: InputDecoration(
-                label: Text('Search'),
+                label: const Text('Search'),
                 hintText: 'Enter city name',
-                helperStyle: TextStyle(fontSize: 18),
+                helperStyle: const TextStyle(fontSize: 18),
                 suffixIcon: IconButton(
                     onPressed: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) {
-                            return WeatherInfoModern();
+                            return const WeatherInfoView();
                           },
                         ),
                       );

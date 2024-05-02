@@ -1,9 +1,6 @@
-import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_finsh/service/weather_service.dart';
-
 import '../../model/weather_model.dart';
 import 'get_weather_state.dart';
 

@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_finsh/cubit/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app_finsh/test.dart';
-
 import 'views/home_view.dart';
-import 'widgets/weather_info_body.dart';
 
 void main() {
   runApp(const MyApp());
