@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_finsh/cubit/get_weather_cubit/get_weather_cubit.dart';
+import 'package:weather_app_finsh/cubit/get_weather_cubit/get_weather_state.dart';
 import 'package:weather_app_finsh/test.dart';
 import 'package:weather_app_finsh/views/search_view.dart';
+
+import 'no_weather_body.dart';
 
 class WeatherInfoView extends StatelessWidget {
   const WeatherInfoView({super.key});
@@ -8,20 +13,6 @@ class WeatherInfoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Weather App'),
-        actions: [
-          IconButton.filledTonal(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) {
-                    return const SearchView();
-                  }),
-                );
-              },
-              icon: const Icon(Icons.search))
-        ],
-      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -57,13 +48,29 @@ class WeatherInfoView extends StatelessWidget {
             ),
             const Text('Light Rain',
                 style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 125),
             MaterialButton(
                 color: Colors.black,
-                child: const Text('Go'),
+                child: const Text(
+                  ' More ',
+                  style: TextStyle(color: Colors.white),
+                ),
                 onPressed: () {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return const WeatherInfoModern();
+
+                    // return BlocBuilder<GetWeatherCubit, WeatherState>(
+                    //   builder: (context, state) {
+                    //     if (state is WeatherInitialState) {
+                    //       return const NoWeatherBody();
+                    //     } else if (state is WeatherLoadedState) {
+                    //       return const WeatherInfoView();
+                    //     } else {
+                    //       return const Text('opps there was an error');
+                    //     }
+                    //   },
+                    // );
                   }));
                 })
           ],

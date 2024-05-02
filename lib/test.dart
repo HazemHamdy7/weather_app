@@ -8,7 +8,7 @@ class WeatherInfoModern extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [Icon(Icons.arrow_back)],
+        actions: const [Icon(Icons.arrow_back)],
       ),
       body: Center(
         child: Container(

@@ -42,3 +42,15 @@ class HomeView extends StatelessWidget {
     );
   }
 }
+
+
+/*
+create states
+create cubit
+create function
+provied cubit => Bloc Provider in thr Materl app
+integrate cubit => BlocBuilder in the search view 
+
+ trigger cubit  =>   var getWeatherCubit = BlocProvider.of<GetWeatherCubit>(context);
+                getWeatherCubit.getWeathrer(cityName: value);
+*/
