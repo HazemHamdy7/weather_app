@@ -7,7 +7,7 @@ import '../model/weather_model.dart';
 class WeatherSeavice {
   final Dio dio;
   final String baseUrl = 'http://api.weatherapi.com/v1';
-  final String apiKey = 'f65075417336485388273336241603';
+  final String apiKey = '5f80508b0570487fa3a20822240205 ';
   WeatherSeavice(this.dio);
 
   Future<WeatherModel> getCurrentWeather({required String cityName}) async {
@@ -16,6 +16,7 @@ class WeatherSeavice {
           .get('$baseUrl/forecast.json?key=$apiKey&q=$cityName&days=1');
 
       WeatherModel weatherModel = WeatherModel.fromJson(response.data);
+      print(weatherModel);
 
       return weatherModel;
     } on DioException catch (e) {
@@ -23,8 +24,19 @@ class WeatherSeavice {
           e.response?.data['error']['message'] ?? ' oops there was an error';
       throw Exception(errMessage);
     } catch (e) {
-      log(e.toString());
-      throw Exception(' oops there was an error');
+      e.toString();
+      throw Exception('opppps the was error');
     }
   }
 }
+
+
+// on DioException catch (e) {
+//       final String errMessage =
+//           e.response?.data['error']['message'] ?? ' oops there was an error';
+
+//       throw Exception(errMessage);
+//     } catch (e) {
+//       log(e.toString());
+//       throw Exception(' oops there was an error');
+//     }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weather_app_finsh/cubit/get_weather_cubit/get_weather_cubit.dart';
+import 'package:weather_app_finsh/test.dart';
+
+import 'views/home_view.dart';
 import 'widgets/weather_info_body.dart';
 
 void main() {
@@ -11,8 +16,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: WeatherInfoView(),
+    return BlocProvider(
+      create: (context) => GetWeatherCubit(),
+      child: const MaterialApp(
+        home: HomeView(),
+      ),
     );
   }
 }

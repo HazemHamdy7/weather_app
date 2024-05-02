@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app_finsh/views/search_view.dart';
 
 class WeatherInfoView extends StatelessWidget {
   const WeatherInfoView({super.key});
@@ -10,7 +11,14 @@ class WeatherInfoView extends StatelessWidget {
         title: const Text('Weather App'),
         actions: [
           IconButton.filledTonal(
-              onPressed: () {}, icon: const Icon(Icons.search))
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) {
+                    return const SearchView();
+                  }),
+                );
+              },
+              icon: const Icon(Icons.search))
         ],
       ),
       body: Padding(
