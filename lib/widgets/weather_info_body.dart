@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_finsh/cubit/get_weather_cubit/get_weather_cubit.dart';
-import 'package:weather_app_finsh/cubit/get_weather_cubit/get_weather_state.dart';
-import 'package:weather_app_finsh/test.dart';
-import 'package:weather_app_finsh/views/search_view.dart';
 
-import 'no_weather_body.dart';
+import '../test.dart';
 
 class WeatherInfoView extends StatelessWidget {
-  const WeatherInfoView({super.key});
+  const WeatherInfoView({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -19,9 +19,10 @@ class WeatherInfoView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const SizedBox(height: 100),
-            const Text('Alexandria',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
-            const Text('Updated at 23:46', style: TextStyle(fontSize: 20)),
+            Text(weatherModel.cityName,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+              Text(weatherModel.date, style: TextStyle(fontSize: 20)),
             const SizedBox(height: 32),
             Padding(
               padding: const EdgeInsets.all(25.0),

@@ -1,15 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'cubit/get_weather_cubit/get_weather_cubit.dart';
 
 class WeatherInfoModern extends StatelessWidget {
   const WeatherInfoModern({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+
     return Scaffold(
-      appBar: AppBar(
-        actions: const [Icon(Icons.arrow_back)],
-      ),
+      appBar: AppBar(),
       body: Center(
         child: Container(
           color: Colors.grey[900],
@@ -20,41 +23,47 @@ class WeatherInfoModern extends StatelessWidget {
             child: Column(
               children: [
                 //! This is the scend colume num 1
-                const Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(children: [
-                        Icon(Icons.location_off, color: Colors.white),
-                        SizedBox(width: 8),
-                        CustomText(
-                            text: 'Dokki',
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)
-                      ]),
-                      SizedBox(height: 15),
-                      CustomText(
-                          text: 'Mon , 29 April 10:23 pm', color: Colors.grey)
-                    ]),
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                  Row(children: [
+                    const Icon(Icons.location_off, color: Colors.white),
+                    const SizedBox(width: 8),
+                    CustomText(
+                        text: weatherModel.cityName,
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold)
+                  ]),
+                  const SizedBox(height: 15),
+                  CustomText(
+                      text: '${weatherModel.date} pm', color: Colors.grey)
+                ]),
 
                 //! This is the scend colume num 2
                 const SizedBox(height: 5),
-                const Row(children: [
+                Row(children: [
                   Row(children: [
-                    Icon(Icons.wb_sunny_sharp, size: 50, color: Colors.white),
-                    SizedBox(width: 20),
+                    const Icon(Icons.wb_sunny_sharp,
+                        size: 50, color: Colors.white),
+                    const SizedBox(width: 20),
                     CustomText(
-                        text: '22°',
+                        text: '${weatherModel.temp}°',
                         color: Colors.white,
                         fontSize: 50,
                         fontWeight: FontWeight.bold)
                   ]),
-                  SizedBox(width: 120),
+                  const SizedBox(width: 40),
                   Column(children: [
-                    CustomText(color: Colors.grey, text: 'Fair', fontSize: 14),
                     CustomText(
-                        text: '30° / 18°', color: Colors.grey, fontSize: 14),
+                        color: Colors.grey,
+                        fontWeight: FontWeight.bold,
+                        text: '${weatherModel.weatherStatus} ',
+                        fontSize: 14),
                     CustomText(
+                        text:
+                            '${weatherModel.maxTemp}° /  ${weatherModel.minTemp}°',
+                        color: Colors.grey,
+                        fontSize: 14),
+                    const CustomText(
                         color: Colors.grey,
                         text: 'Feels like 22°',
                         fontSize: 14)
@@ -112,21 +121,22 @@ class WeatherInfoLast extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    var weatherModel = BlocProvider.of<GetWeatherCubit>(context).weatherModel;
+    return Row(
       children: [
         Column(
           children: [
-            Icon(
+            const Icon(
               Icons.wb_sunny_outlined,
               color: Colors.grey,
             ),
-            SizedBox(height: 5),
+            const SizedBox(height: 5),
             CustomText(
-              text: '21°',
+              text: '${weatherModel.temp}°',
               color: Colors.grey,
             ),
-            SizedBox(height: 5),
-            Row(
+            const SizedBox(height: 5),
+            const Row(
               children: [
                 Icon(
                   Icons.water_drop_outlined,
